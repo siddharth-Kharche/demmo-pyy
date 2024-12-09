@@ -3,3 +3,5 @@ groq==0.13.0
 joblib==1.4.2
 pandas==2.2.3
 scikit-learn==1.5.2
+gunicorn==23.0.0
+
