@@ -10,10 +10,10 @@ app = Flask(__name__)
 # Load model and preprocessors
 def load_model_and_preprocessors():
     try:
-        model = joblib.load('/Users/rushikeshvinodkharche/Desktop/htmlmodel 2/models/random_forest_school_status_model (5).joblib')
-        le = joblib.load('/Users/rushikeshvinodkharche/Desktop/htmlmodel 2/models/label_encoder (7).joblib')
-        scaler = joblib.load('/Users/rushikeshvinodkharche/Desktop/htmlmodel 2/models/feature_scaler (7).joblib')
-        imputer = joblib.load('/Users/rushikeshvinodkharche/Desktop/htmlmodel 2/models/feature_imputer (5).joblib')
+        model = joblib.load('random_forest_school_status_model (5).joblib')
+        le = joblib.load('label_encoder (7).joblib')
+        scaler = joblib.load('feature_scaler (7).joblib')
+        imputer = joblib.load('feature_imputer (5).joblib')
         return model, le, scaler, imputer
     except FileNotFoundError as e:
         print(f"FileNotFoundError: {e}")
