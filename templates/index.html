@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Status Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🏫 School Status Classifier</h1>
+        <p class="description">Predict the operational status of a school and get improvement recommendations.</p>
+
+        {% if error %}
+        <div class="error-message">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="POST" action="/">
+            <div class="input-section">
+                <h2>School Infrastructure Details</h2>
+                
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="total_class_rooms">Total Classrooms</label>
+                        <input type="number" id="total_class_rooms" name="total_class_rooms" min="0" required value="1">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="total_teachers">Total Teachers</label>
+                        <input type="number" id="total_teachers" name="total_teachers" min="0" required value="1">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="total_students">Total Students</label>
+                        <input type="number" id="total_students" name="total_students" min="0" required value="1">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="grade_configuration">Grade Configuration</label>
+                        <input type="text" id="grade_configuration" name="grade_configuration" placeholder="e.g., 1,12" value="1,12">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="total_washrooms">Total Washrooms</label>
+                        <input type="text" id="total_washrooms" name="total_washrooms" value="2">
+                    </div>
+                </div>
+
+                <h2>School Facilities</h2>
+                <div class="checkbox-grid">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="boundary_wall" name="boundary_wall" value="1">
+                        <label for="boundary_wall">Boundary Wall</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="library_available" name="library_available" value="1">
+                        <label for="library_available">Library Available</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="separate_hm_room" name="separate_hm_room" value="1">
+                        <label for="separate_hm_room">Separate HM Room</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="drinking_water" name="drinking_water" value="1">
+                        <label for="drinking_water">Drinking Water</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="playground" name="playground" value="1">
+                        <label for="playground">Playground</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="electricity" name="electricity" value="1">
+                        <label for="electricity">Electricity</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="predict-btn">Predict School Status</button>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <p>School Status Classifier powered by Machine Learning</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Status Prediction Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container results-container">
+        <h1>🏫 School Status Results</h1>
+        
+        <div class="result-section">
+            <h2>Prediction Details</h2>
+            <div class="prediction-box">
+                <p><strong>Predicted Status:</strong> <span class="status-label">{{ prediction }}</span></p>
+            </div>
+
+            <div class="probabilities-section">
+                <h3>Status Probabilities</h3>
+                <table class="probabilities-table">
+                    <thead>
+                        <tr>
+                            <th>Status</th>
+                            <th>Probability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for _, row in probabilities.iterrows() %}
+                        <tr>
+                            <td>{{ row['Status'] }}</td>
+                            <td>{{ '{:.2%}'.format(row['Probability']) }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        {% if suggestions %}
+        <div class="suggestions-section">
+            <h2>🚀 Improvement Suggestions</h2>
+            <div class="suggestions-content">
+                <pre>{{ suggestions }}</pre>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="action-buttons">
+            <a href="/" class="btn btn-secondary">Analyze Another School</a>
+            <button onclick="window.print()" class="btn btn-print">Print Report</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>School Status Classifier powered by Machine Learning</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
